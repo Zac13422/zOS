@@ -19,18 +19,17 @@ function update()
  
     function Download(path, file)
         write("[Info] Downloading "..path.."...")
-        if not fs.exists("/data/zpm/branch") then
-			data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/master/"..file)
-		else
-			
-			local f = fs.open("/data/zpm/branch", "r")
-			local branch = f.readLine()
-			if branch=="testing" then
-				data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/testing/"..file)
-			else
-				data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/master/"..file)
-			end
-		end
+      	if not fs.exists("/data/zpm/branch") then
+            data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/master/"..file)
+        else
+            local f = fs.open("/data/zpm/branch", "r")
+            local branch = f.readLine()
+            if branch=="testing" then
+                data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/testing/"..file)
+            else
+                data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/master/"..file)
+            end
+        end
 		
         data = data.readAll()
            
