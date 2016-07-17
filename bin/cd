@@ -1,4 +1,5 @@
 local tArgs = { ... }
+
 if #tArgs < 1 then
 	text.usage( "cd <path>" )
 	return
@@ -6,7 +7,14 @@ end
 
 local sNewDir = shell.resolve( tArgs[1] )
 if fs.isDir( sNewDir ) then
-	shell.setDir( sNewDir )
+	if user==root then
+		shell.setDir( sNewDir )
+	elseif (user~=root)	and (sNewDir=="data/usrdata") or (sNewDir=="data/usrlist")
+		print("Acess denied")
+	else
+		shell.setDir( sNewDir )
+	end
+	
 else
   	text.err( "Not a directory" )
   	return
