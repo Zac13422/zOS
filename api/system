@@ -1,8 +1,7 @@
 --System API
  
 function update()
-    _actualUser = user.getActualUser()
-    _zuser = user.zuser
+
     if term.isColor() then
         term.setTextColor(colors.blue)
     end
@@ -54,16 +53,16 @@ function update()
     Download("/bin/zsh", "bin/zsh")
     Download("/bin/update", "bin/update")
     Download("/bin/useradd", "bin/useradd")
- 
-    write("Reloading  APIs...")
-    system.loadAllSysAPI()
+
     Done()
-   	user.setActualUser(_actualUser)
-    user.zuser = _zuser
+
 
 end
  
 function loadSysAPI(api)
+    _actualUser = user.getActualUser()
+    _zuser = user.zuser
+	print("Reloading all APIS")
     if fs.exists("/api/"..tostring(api)) then
         os.loadAPI("/api/"..tostring(api))
     else
@@ -75,6 +74,8 @@ function loadSysAPI(api)
             term.setTextColor(colors.white)
         end
     end
+   	user.setActualUser(_actualUser)
+    user.zuser = _zuser
 end
  
 function loadAllSysAPI()
