@@ -58,7 +58,7 @@ function update()
     write("Reloading  APIs...")
     system.loadAllSysAPI()
     Done()
-	if _actualUser ~= "none then
+	if _actualUser ~= "none" then
    		user.setActualUser(_actualUser)
     	user.zuser = _zuser
 	end
