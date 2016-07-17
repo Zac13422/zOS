@@ -58,8 +58,10 @@ function update()
     write("Reloading  APIs...")
     system.loadAllSysAPI()
     Done()
-    user.setActualUser(_actualUser)
-    user.zuser = _zuser
+	if _actualUser ~= "none then
+   		user.setActualUser(_actualUser)
+    	user.zuser = _zuser
+	end
 end
  
 function loadSysAPI(api)
