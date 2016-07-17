@@ -4,5 +4,20 @@ os.loadAPI("api/system")
 system.loadAllSysAPI()
 shell.setPath("/bin:/usr/bin:/bin/ccUnchanged")
 
+if term.isColor() then
+	shell.setPath(shell.path()..":/bin/ccUnchanged/advanced")
+end
+
+if pocket then
+	shell.setPath(shell.path()..":/bin/ccUnchanged/pocket")
+end
+
+if commands then
+	shell.setPath(shell.path()..":/bin/ccUnchanged/command")
+end
+if http then
+	shell.setPath(shell.path()..":/bin/ccUnchanged/http")
+end
+
 shell.run("/bin/hidden/login")
 shell.run("/bin/zsh")
