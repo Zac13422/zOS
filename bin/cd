@@ -7,7 +7,7 @@ end
 
 local sNewDir = shell.resolve( tArgs[1] )
 if fs.isDir( sNewDir ) then
-	if (user.getActualUser()~="root")	and (sNewDir=="data/usrdata") or (user.getActualUser()~="root") and (sNewDir=="data/usrlist") then
+	if (user.getActualUser()~="root")	and (sNewDir=="data")then
 		print("Acess denied")
 	else
 		shell.setDir( sNewDir )
