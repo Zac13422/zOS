@@ -50,8 +50,11 @@ function passwd(user)
             if passwd1~= passwd2 then
                 print("The passwords don't match.")
             end
-            if (passwd1=="") or (passwd2=="") then
+            if (passwd1==passwd2) and (passwd1=="") or (passwd2=="") then
 				text.err("Invalid password")
+				if term.isColor() then
+					term.setTextColor(colors.blue)
+				end
 			end
             if (passwd1==passwd2) and (passwd1~="") and (passwd2~="") then
                 if fs.exists("data/usrlist/"..user) then
