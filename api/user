@@ -46,13 +46,13 @@ function passwd(user)
             passwd1 = read("#")
             write("Type the password again:")
             passwd2 = read("#")
-   
+
             if passwd1~= passwd2 then
                 print("The passwords don't match.")
             end
            
        
-            if (passwd1==passwd2) then
+            if (passwd1==passwd2) and (passwd1~="") and (passwd2~="") then
                 if fs.exists("data/usrlist/"..user) then
                     fs.delete("data/usrlist/"..user)
                 end
