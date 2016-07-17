@@ -2,7 +2,7 @@
 --used to manage users and passwords
  
 local actualUser = "LoginManager"
-zuser = "none"
+zuser = "LoginManager"
 isLogged = false
  
 function getActualUser()
