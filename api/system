@@ -19,7 +19,7 @@ function update()
  
     function Download(path, file)
         write("[Info] Downloading "..path.."...")
-        local data = http.get("https://github.com/Zac13422/raw/master/"..file)
+        local data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/master/"..file)
         data = data.readAll()
            
         local file = fs.open(path, "w")
