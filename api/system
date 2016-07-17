@@ -23,8 +23,8 @@ function update()
 			local data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/master/"..file)
 		else
 			
-			local file = fs.open("/data/zpm/branch", "r")
-			local branch = file.readLine()
+			local f = fs.open("/data/zpm/branch", "r")
+			local branch = f.readLine()
 			if branch=="testing" then
 				local data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/testing/"..file)
 			else
