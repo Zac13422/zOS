@@ -1,0 +1,5 @@
+print( "Goodbye "..user.zuser)
+term.setTextColour( colours.white )
+
+sleep( 1 )
+os.shutdown()

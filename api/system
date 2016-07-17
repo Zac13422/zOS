@@ -1,0 +1,74 @@
+--System API
+ 
+function update()
+    _actualUser = user.getActualUser()
+    _zuser = user.zuser
+    if term.isColor() then
+        term.setTextColor(colors.blue)
+    end
+    print("Starting system update...")
+    function Done()
+        if term.isColor() then
+            term.setTextColor(colors.lime)
+        end
+        print("Done")
+        if term.isColor() then
+            term.setTextColor(colors.blue)
+        end
+    end
+ 
+    function Download(path, PBCode)
+        write("[Info] Downloading "..path.."...")
+        local data = http.get("http://pastebin.com/raw/"..PBCode)
+        data = data.readAll()
+           
+        local file = fs.open(path, "w")
+        file.write(data)
+        file.close()
+        Done() 
+    end
+       
+    Download("/.settings", "0CG5HZp7")
+    Download("/startup", "LqACtGs7")
+    Download("/api/text", "KB8Uxv9b")
+    Download("/api/system", "D3ajQk2q")
+    Download("/api/user", "UC3sUSxY")
+    Download("/bin/cd", "Ld9P02L6")
+    Download("/bin/date", "MEgKfshf")
+    Download("/bin/hidden/login", "gXgYFzY1")
+    Download("/bin/logout", "zQwxbp9N")
+    Download("/bin/passwd", "JREhFb50")
+    Download("/bin/pwd", "J6Y9u8wA")
+    Download("/bin/reboot", "g1gwNSTL")
+    Download("/bin/shutdown", "VBUc3r1q")  
+    Download("/bin/zsh", "FKMX33vB")
+    Download("/bin/update", "iCnwzwWT")
+    Download("/bin/useradd", "0A8PQpUy")
+ 
+    write("Reloading  APIs...")
+    system.loadAllSysAPI()
+    Done()
+    user.setActualUser(_actualUser)
+    user.zuser = _zuser
+end
+ 
+function loadSysAPI(api)
+    if fs.exists("/api/"..tostring(api)) then
+        os.loadAPI("/api/"..tostring(api))
+    else
+        if term.isColor() then
+            term.setTextColor(colors.red)
+        end
+        print("The API "..api.." doesn't exists.")
+        if term.isColor() then
+            term.setTextColor(colors.white)
+        end
+    end
+end
+ 
+function loadAllSysAPI()
+    apiList = fs.list("/api")
+    for i=1, #apiList do
+        loadSysAPI(apiList[i])
+    end
+end

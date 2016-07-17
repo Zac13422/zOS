@@ -1,0 +1,8 @@
+os.pullEvent = os.pullEventRaw
+
+os.loadAPI("api/system")
+system.loadAllSysAPI()
+shell.setPath("/bin:/usr/bin:/bin/ccUnchanged")
+
+shell.run("/bin/hidden/login")
+shell.run("/bin/zsh")

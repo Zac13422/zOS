@@ -1,0 +1,66 @@
+local f = fs.open("data/usrlist/root", "r")
+rootPass = f.readLine()
+f.close()
+
+f = fs.open("data/usrdata/usernumber", "r")
+userNumber = f.readLine()
+f.close()
+  
+f = fs.open("data/usrdata/userlist", "r")
+userList = {}
+for i=1, userNumber do
+	table.insert(userList, f.readLine())
+end
+  
+local passList = {}
+  
+for i=1, #userList do
+    f = fs.open("data/usrlist/"..userList[i], "r")
+	table.insert(passList, f.readLine())
+	f.close()
+end
+  
+term.clear()
+text.out("zOS Version 0.1 alpha", colors.green, colors.blue, 15, 1)
+term.setCursorPos(1,3)
+print("To connect as a guest, just type guest as username and leave the password blank")
+  
+while not user.isLogged do
+    write("username:")
+    local iuser = read()
+    
+    write("password:")
+    local ipass = read("#")
+    
+    if iuser=="guest" then
+		user.isLogged = true
+		user.setActualUser("guest")
+		user.zuser = "guest"
+		print("Welcome guest!")
+		os.sleep(1)
+    end
+    
+    if (iuser=="root") and (ipass==rootPass) then
+		user.isLogged = true
+		user.setActualUser("root")
+		user.zuser = "root"
+		print("Welcome root!")
+		shell.setDir("root")
+		os.sleep(1)
+    else
+      for i=1, #userList do
+        if (iuser==userList[i]) and (ipass==passList[i]) then
+          user.isLogged = true
+          user.setActualUser(userList[i])
+		  user.zuser = userList[i]
+          print("Welcome "..userList[i].."!")
+		  shell.setDir("home/"..userList[i])
+          os.sleep(1)
+        end
+      end
+    end
+    if user.isLogged==false then
+      print("Error:incorrect username or password!")
+      os.sleep(1)
+    end
+  end

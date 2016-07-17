@@ -1,0 +1,77 @@
+--Text API
+ 
+function out(text, color1, color2, xb, yb)
+local setCursor = false
+    if (xb~=nil) or (yb~=nil) then
+        if (xb==nil) or (yb==nil) then
+           
+            return
+        else
+            setCursor = true
+            xa, ya = term.getCursorPos()
+            term.setCursorPos(xb, yb)
+        end
+    else
+   
+    end
+    if term.isColor() then
+        term.setTextColor(color1 or colors.white)
+    end
+    write(text)
+    if term.isColor() then
+        term.setTextColor(color2 or colors.white)
+    end
+    if setCursor then
+        term.setCursorPos(xa, ya)
+    end
+end
+ 
+function info(text)
+    if term.isColor() then
+        term.setTextColor(colors.blue)
+    end
+    print("[Info] "..text)
+    if term.isColor() then
+        term.setTextColor(colors.white)
+    end
+end
+ 
+function warn(text)
+    if term.isColor() then
+        term.setTextColor(colors.yellow)
+    end
+    print("[Warn] "..text)
+    if term.isColor() then
+        term.setTextColor(colors.white)
+    end
+end
+ 
+function err(text)
+    if term.isColor() then
+        term.setTextColor(colors.red)
+    end
+    print("[Error] "..text)
+    if term.isColor() then
+        term.setTextColor(colors.white)
+    end
+end
+ 
+function usage(text)
+    if term.isColor() then
+        term.setTextColor(colors.orange)
+    end
+    print("Usage : "..text)
+    if term.isColor() then
+        term.setTextColor(colors.white)
+    end
+end
+ 
+function Done()
+    if term.isColor() then
+        term.setTextColor(colors.lime)
+    end
+    print("Done")
+    if term.isColor() then
+        term.setTextColor(colors.lightBlue)
+    end
+end

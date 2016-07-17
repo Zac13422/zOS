@@ -1,0 +1,54 @@
+
+if multishell then
+    multishell.setTitle( multishell.getCurrent(), "zshell" )
+end
+
+local bExit = false
+
+-- Colours
+local zpromptColour, ztextColour, zbgColour
+if term.isColour() then
+	zpromptColour = colours.green
+	ztextColour = colours.blue
+	zbgColour = colours.black
+else
+	zpromptColour = colours.white
+	ztextColour = colours.white
+	zbgColour = colours.black
+end
+
+	local tCommandHistory = {}
+	local computer = os.getComputerLabel()
+	
+	
+    while not bExit do
+        term.setBackgroundColor( zbgColour )
+        term.setTextColour( zpromptColour )
+		if (user.zuser=="root") and (shell.dir()=="root") then
+		write("["..user.zuser.."@"..computer.." ~]")
+		elseif (user.zuser~="root") and (shell.dir()=="home/"..user.zuser) then
+		write("["..user.zuser.."@"..computer.." ~]")
+		else
+        write("["..user.zuser.."@"..computer.." /"..shell.dir().."]")
+		end
+		if user.zuser=="root" then
+			write("#")
+		else
+			write("$")
+		end
+		
+        term.setTextColour( ztextColour )
+
+
+        local sLine
+        if settings.get( "shell.autocomplete" ) then
+            sLine = read( nil, tCommandHistory, shell.complete )
+        else
+            sLine = read( nil, tCommandHistory )
+        end
+        table.insert( tCommandHistory, sLine )
+        shell.run( sLine )
+		if bExit then
+			os.shutdown()
+		end
+    end
