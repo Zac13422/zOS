@@ -6,7 +6,9 @@ end
 local bExit = false
 
 -- Colours
-local zpromptColour, ztextColour, zbgColour
+zpromptColour = nil
+ztextColour = nil
+zbgColour = nil
 if term.isColour() then
 	zpromptColour = colours.green
 	ztextColour = colours.blue
