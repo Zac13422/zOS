@@ -1,8 +1,8 @@
 --System API
  
 function update()
-    _actualUser = user.getActualUser() or "none"
-    _zuser = user.zuser or "none"
+    _actualUser = user.getActualUser()
+    _zuser = user.zuser
     if term.isColor() then
         term.setTextColor(colors.blue)
     end
