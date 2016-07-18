@@ -78,10 +78,10 @@ function loadSysAPI(api)
 end
  
 function loadAllSysAPI()
-	write("[Info] Reloading all APIS")
+	write("[Info] Reloading all APIs...")
     apiList = fs.list("/api")
     for i=1, #apiList do
         loadSysAPI(apiList[i])
     end
-	Done()
+	text.Done()
 end
