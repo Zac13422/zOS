@@ -1,0 +1,17 @@
+local tArgs = { ... }
+if #tArgs < 2 then
+	print( "Usage: rename <source> <destination>" )
+	return
+end
+
+local sSource = shell.resolve( tArgs[1] )
+local sDest = shell.resolve( tArgs[2] )
+local size = string.len(user.getActualUser())+5
+local user = user.getActualUser()
+
+if (user~="root") and (string.sub(sSource,1,size)~="home/"..user) or (user~="root") and (string.sub(sDest,1,size)~="home/"..user) then
+	print("You don't have the permission to do that")
+	return
+end
+
+fs.move( sSource, sDest )
