@@ -21,7 +21,7 @@ for i=1, #userList do
 end
   
 term.clear()
-text.out("zOS Version 0.1.1 alpha", colors.green, colors.blue, 15, 1)
+text.out("zOS Version 0.1 alpha", colors.green, colors.blue, 15, 1)
 term.setCursorPos(1,3)
 print("To connect as a guest, just type guest as username and leave the password blank")
   
