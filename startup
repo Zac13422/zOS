@@ -22,6 +22,7 @@ end
 
 shell.clearAlias("cp")
 shell.clearAlias("mv")
+shell.clearAlias("rm")
 
 os.loadAPI("/bin/zsh")
 shell.run("/bin/hidden/login")
