@@ -9,7 +9,7 @@ local tFiles = fs.find( sPath )
 local size = string.len(user.getActualUser())+5
 local user = user.getActualUser()
 
-if (user~="root") and (string.sub(sPath,1,size)~="home/"..user) then
+if (user~="root") and (string.sub(sPath,1,size)~="home/"..user) or (user~="root") and (string.sub(sPath,1,size)=="home/"..user) then
 	print("You don't have the permission to do that")
 	return
 end
