@@ -21,6 +21,7 @@ if http then
 end
 
 shell.clearAlias("cp")
+shell.clearAlias("mv")
 
 os.loadAPI("/bin/zsh")
 shell.run("/bin/hidden/login")
