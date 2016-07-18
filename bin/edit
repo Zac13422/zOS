@@ -13,7 +13,7 @@ if fs.exists( sPath ) and fs.isDir( sPath ) then
 	return
 end
 
-if (user.getActualUser~="root") and (string.sub(sPath,1,4)~="home") then
+if (user.getActualUser()~="root") and (string.sub(sPath,1,4)~="home") then
 	print("You don't have the permission to do that")
 	return
 end
