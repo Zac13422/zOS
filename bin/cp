@@ -7,7 +7,7 @@ end
 local sSource = shell.resolve( tArgs[1] )
 local sDest = shell.resolve( tArgs[2] )
 local tFiles = fs.find( sSource )
-local size = string.len(user.getActualUser()+5)
+local size = string.len(user.getActualUser())+5
 local user = user.getActualUser()
 
 if (user~="root") and (string.sub(sSource,1,size)~="home/"..user) or (user~="root") and (string.sub(sDest,1,size)~="home/"..user) then
