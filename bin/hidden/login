@@ -23,7 +23,6 @@ end
 term.clear()
 text.out("zOS Version 0.1.2 testing", colors.green, colors.blue, 15, 1)
 term.setCursorPos(1,3)
-print("To connect as a guest, just type guest as username and leave the password blank")
   
 while not user.isLogged do
     write("username:")
@@ -31,14 +30,6 @@ while not user.isLogged do
     
     write("password:")
     local ipass = read("#")
-    
-    if iuser=="guest" then
-		user.isLogged = true
-		user.setActualUser("guest")
-		user.zuser = "guest"
-		print("Welcome guest!")
-		os.sleep(1)
-    end
     
     if (iuser=="root") and (ipass==rootPass) then
 		user.isLogged = true
