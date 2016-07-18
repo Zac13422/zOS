@@ -22,7 +22,6 @@ end
 
 shell.clearAlias("cp")
 shell.clearAlias("dir")
-shell.clearAlias("ls")
 shell.clearAlias("mv")
 shell.clearAlias("rm")
 shell.clearAlias("sh")

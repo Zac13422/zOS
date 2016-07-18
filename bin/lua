@@ -5,8 +5,9 @@ if #tArgs > 0 then
 	return
 end
 
-if user.getActualUser~="root" then
+if user.getActualUser()~="root" then
 	print("Acess denied! You must be root to use the lua prompt")
+	return
 end
 
 local bRunning = true
