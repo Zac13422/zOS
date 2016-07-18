@@ -1,9 +1,15 @@
 local args = { ... }
 
+if user.getActualUser()~="root" then
+	print("Acess denied! You must be root.")
+	return
+end
+
 if #args < 1 then
   text.usage("useradd <user1> [<user2> ...]")
   return
 else
+	
 	for i=1, #args do
 		user.add(args[i])
  	end
