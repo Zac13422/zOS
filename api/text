@@ -32,7 +32,7 @@ function info(text)
     end
     print("[Info] "..text)
     if term.isColor() then
-        term.setTextColor(colors.white)
+        term.setTextColor(colors.blue)
     end
 end
  
@@ -42,7 +42,7 @@ function warn(text)
     end
     print("[Warn] "..text)
     if term.isColor() then
-        term.setTextColor(colors.white)
+        term.setTextColor(colors.blue)
     end
 end
  
@@ -52,7 +52,7 @@ function err(text)
     end
     print("[Error] "..text)
     if term.isColor() then
-        term.setTextColor(colors.white)
+        term.setTextColor(colors.blue)
     end
 end
  
@@ -62,7 +62,7 @@ function usage(text)
     end
     print("Usage : "..text)
     if term.isColor() then
-        term.setTextColor(colors.white)
+        term.setTextColor(colors.blue)
     end
 end
  
@@ -72,6 +72,6 @@ function Done()
     end
     print("Done")
     if term.isColor() then
-        term.setTextColor(colors.lightBlue)
+        term.setTextColor(colors.blue)
     end
 end

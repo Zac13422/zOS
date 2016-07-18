@@ -1,0 +1,32 @@
+local tArgs = { ... }
+if #tArgs < 2 then
+	print( "Usage: cp <source> <destination>" )
+	return
+end
+
+local sSource = shell.resolve( tArgs[1] )
+local sDest = shell.resolve( tArgs[2] )
+local tFiles = fs.find( sSource )
+local size = string.len(user.getActualUser())+5
+local user = user.getActualUser()
+
+if (user~="root") and (string.sub(sSource,1,size)~="home/"..user) or (user~="root") and (string.sub(sDest,1,size)~="home/"..user) then
+	print("You don't have the permission to do that")
+	return
+end
+
+
+if #tFiles > 0 then
+    for n,sFile in ipairs( tFiles ) do
+        if fs.isDir( sDest ) then
+            fs.copy( sFile, fs.combine( sDest, fs.getName(sFile) ) )
+        elseif #tFiles == 1 then
+            fs.copy( sFile, sDest )
+        else
+            printError( "Cannot overwrite file multiple times" )
+            return
+        end
+    end
+else
+    printError( "No matching files" )
+end

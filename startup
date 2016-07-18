@@ -20,5 +20,12 @@ if http then
 	shell.setPath(shell.path()..":/bin/ccUnchanged/http")
 end
 
+shell.clearAlias("cp")
+shell.clearAlias("dir")
+shell.clearAlias("mv")
+shell.clearAlias("rm")
+shell.clearAlias("sh")
+
+os.loadAPI("/bin/zsh")
 shell.run("/bin/hidden/login")
 shell.run("/bin/zsh")

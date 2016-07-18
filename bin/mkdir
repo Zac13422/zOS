@@ -1,0 +1,16 @@
+local tArgs = { ... }
+if #tArgs < 1 then
+	print( "Usage: mkdir <path>" )
+	return
+end
+
+local size = string.len(user.getActualUser())+5
+local user = user.getActualUser()
+local sNewDir = shell.resolve( tArgs[1] )
+
+if (user~="root") and (string.sub(sNewDir,1,size)~="home/"..user)then
+	print("You don't have the permission to do that")
+	return
+end
+
+fs.makeDir( sNewDir )
