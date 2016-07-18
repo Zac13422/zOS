@@ -1,6 +1,0 @@
-print("Goodbye "..user.getActualUser().."!")
-os.sleep(1)
-term.clear()
-term.setCursorPos(1,1)
-user.isLogged = false
-shell.run("/bin/hidden/login")

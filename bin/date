@@ -1,2 +1,0 @@
-write("Day "..os.day().." ")
-print(textutils.formatTime(os.time()))
