@@ -20,6 +20,8 @@ if http then
 	shell.setPath(shell.path()..":/bin/ccUnchanged/http")
 end
 
+shell.clearAlias("cp")
+
 os.loadAPI("/bin/zsh")
 shell.run("/bin/hidden/login")
 shell.run("/bin/zsh")
