@@ -26,14 +26,14 @@ end
     while not bExit do
         term.setBackgroundColor( zbgColour )
         term.setTextColour( zpromptColour )
-		if (user.zuser=="root") and (shell.dir()=="root") then
-		write("["..user.zuser.."@"..computer.." ~]")
-		elseif (user.zuser~="root") and (shell.dir()=="home/"..user.zuser) then
-		write("["..user.zuser.."@"..computer.." ~]")
+		if (user.getActualUser()=="root") and (shell.dir()=="root") then
+		write("["..user.getActualUser().."@"..computer.." ~]")
+		elseif (user.getActualUser()~="root") and (shell.dir()=="home/"..user.getActualUser()) then
+		write("["..user.getActualUser().."@"..computer.." ~]")
 		else
-        write("["..user.zuser.."@"..computer.." /"..shell.dir().."]")
+        write("["..user.getActualUser().."@"..computer.." /"..shell.dir().."]")
 		end
-		if user.zuser=="root" then
+		if user.getActualUser()=="root" then
 			write("#")
 		else
 			write("$")
