@@ -354,7 +354,7 @@ lookupFunctions.github = function(package)
 				for str in response:gmatch('"sha":%s*"([^\"]+)",') do table.insert(fVer, str) end
 			end
 		else
-			text.warn("Can't fetc/zpmh repository information")
+			text.warn("Can't fetch repository information")
 			return nil
 		end
 		local directoryContents = {}
@@ -389,7 +389,7 @@ lookupFunctions.bitbucket = function(package)
 				for str, ver in string.gmatch(string.match(response, '"files": %[(.-)%]'), '"path": "([^\"]+)".-"revision": "([^\"]+)"') do table.insert(directoryContents, {type = "file", path = str, version = ver}) end
 			end
 		else
-			text.warn("Can't fetc/zpmh repository information")
+			text.warn("Can't fetch repository information")
 			return nil
 		end
 		return directoryContents
@@ -410,7 +410,7 @@ end
 
 -- Local function to download a url raw
 local function raw(url)
-	text.info("Fetc/zpmhing: "..url)
+	text.info("Fetching: "..url)
 	http.request(url)
 	while true do
 		local event = {os.pullEvent()}
@@ -418,7 +418,7 @@ local function raw(url)
 			text.info("Done!")
 			return event[3].readAll()
 		elseif event[1] == "http_failure" then
-			text.warn("Unable to fetc/zpmh file "..event[2])
+			text.warn("Unable to fetch file "..event[2])
 			return false
 		end
 	end
@@ -444,7 +444,7 @@ end
 
 downloadFunctions.github = function(pack, env, queue)
 	local contents = lookupFunctions.github(pack)
-	if not contents then return nil, "content fetc/zpmh failure" end
+	if not contents then return nil, "content fetch failure" end
 	local localTarget = pack.target or ""
 	for num, file in ipairs(contents) do
 		local path = fs.combine(localTarget, file.path)

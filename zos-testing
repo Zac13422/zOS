@@ -8,7 +8,7 @@ if fs.exists("/bin/zsh") then
 		answer = read()
 		if answer=="y" then
 			text.info("Beginning system reset..")
-		elseif answer=="n" or answer==""
+		elseif answer=="n" or answer=="" then
 			text.info("Reset cancelled.")
 			return
 		end
