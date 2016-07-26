@@ -18,11 +18,11 @@ function update()
  
     function Download(path)
         write("[Info] Downloading "..path.."...")
-      	if not fs.exists("/data/zpm/branch") then
+      	if not fs.exists("/data/zpm/sysbranch") then
             data = https.get("https://raw.github.com/Zac13422/zOS/master"..path)
         end
-		if fs.exists("/data/zpm/branch") then
-			local f = fs.open("/data/zpm/branch", "r")
+		if fs.exists("/data/zpm/sysbranch") then
+			local f = fs.open("/data/zpm/sysbranch", "r")
 			branch = f.readLine()
 
 		data = http.get("https://raw.github.com/Zac13422/zOS/"..branch..path)
