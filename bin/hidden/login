@@ -1,12 +1,12 @@
-local f = fs.open("data/usrlist/root", "r")
+local f = fs.open("etc/usrlist/root", "r")
 rootPass = f.readLine()
 f.close()
 
-f = fs.open("data/usrdata/usernumber", "r")
+f = fs.open("etc/usrdata/usernumber", "r")
 userNumber = f.readLine()
 f.close()
   
-f = fs.open("data/usrdata/userlist", "r")
+f = fs.open("etc/usrdata/userlist", "r")
 userList = {}
 for i=1, userNumber do
 	table.insert(userList, f.readLine())
@@ -15,7 +15,7 @@ end
 local passList = {}
   
 for i=1, #userList do
-    f = fs.open("data/usrlist/"..userList[i], "r")
+    f = fs.open("etc/usrlist/"..userList[i], "r")
 	table.insert(passList, f.readLine())
 	f.close()
 end
