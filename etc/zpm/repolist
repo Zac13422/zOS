@@ -1,1 +1,2 @@
-zos-testing https://raw.github.com/Zac13422/zOS/testing/etc/zpm/sysrepo
+zos-master https://raw.github.com/Zac13422/zOS/testing/etc/zpm/zos-master
+zos-testing https://raw.github.com/Zac13422/zOS/testing/etc/zpm/zos-testing

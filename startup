@@ -1,5 +1,6 @@
 os.pullEvent = os.pullEventRaw
 
+fs.delete("/tmp/*")
 os.loadAPI("api/user")
 os.loadAPI("api/system")
 system.loadAllSysAPI()

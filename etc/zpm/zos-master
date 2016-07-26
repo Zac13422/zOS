@@ -1,0 +1,263 @@
+name = zos-master
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = os
+    dependencies = zos-master/text zos-master/system zos-master/zsh zos-master/core-bins
+    target = /tmp
+    version = 0.3
+    size = 0
+end
+
+name = core-bins
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = os
+    dependencies = zos-master/cd zos-master/cp zos-master/date zos-master/edit zos-master/lua zos-master/mkdir zos-master/mv zos-master/pwd zos-master/reboot zos-master/rename zos-master/rm zos-master/shutdown
+    target = /tmp
+    version = 0.3
+    size = 0
+end
+
+name = system
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = api
+    dependencies = none
+    target = /api
+    version = 0.3
+    size = 0
+end
+
+name = text
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = api
+    dependencies = none
+    target = /api
+    version = 0.3
+    size = 0
+end
+
+name = user
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = api
+    dependencies = zos-master/login zos-master/logout zos-master/useradd zos-master/passwd
+    target = /api
+    version = 0.3
+    size = 0
+end
+
+name = cd
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = cp
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = date
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = edit
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = login
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin/hidden
+    version = 0.3
+    size = 0
+end
+
+name = logout
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = lua
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = mkdir
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = mv
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = passwd
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = pwd
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = reboot
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = zos-master/user
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = rename
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = zos-master/user
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = rm
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = zos-master/user
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = shutdown
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = zos-master/user
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = useradd
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 0
+end
+
+name = zsh
+    type = github
+        author = Zac13422
+        repository = zOS
+        branch = master
+    category = core-bin
+    dependencies = zos-master/user
+    target = /bin
+    version = 0.3
+    size = 0
+end

@@ -1,5 +1,5 @@
 print( "Goodbye "..user.zuser)
 term.setTextColour( colours.white )
-
+fs.delete("/tmp/*")
 sleep( 1 )
 os.shutdown()

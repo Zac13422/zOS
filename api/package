@@ -11,17 +11,7 @@ local function postStatus(type, text)
 	end
 end
 
-local function printInformation(text)
-	postStatus("info", text)
-end
 
-local function printWarning(text)
-	postStatus("warning", text)
-end
-
-local function printError(text)
-	postStatus("error", text)
-end
 
 local function findFileEntry(fileList, path)
 	local entryFound = false
@@ -59,7 +49,7 @@ local Transaction = {
 		end
 		local handle = io.open(path, "w")
 		if handle then
-			printInformation("Writing file "..path)
+			text.info("Writing file "..path)
 			handle:write(self.contents)
 			handle:close()
 		else
@@ -76,14 +66,14 @@ local Transaction = {
 				handle:close()
 			end
 		end
-		printInformation("Deleting file "..path)
+		text.info("Deleting file "..path)
 		fs.delete(path)
 		return not fs.exists(path)
 	end,
 	makeDirectory = function(self)
 		local path = fs.combine(package.installRoot, self.path)
 		if not fs.exists(path) then
-			printInformation("Creating directory "..path)
+			text.info("Creating directory "..path)
 			fs.makeDir(path)
 		end
 		return fs.isDir(path)
@@ -91,7 +81,7 @@ local Transaction = {
 	removeDirectory = function(self)
 		local path = fs.combine(package.installRoot, self.path)
 		if fs.exists(path) and fs.isDir(path) and #(fs.list(path)) == 0 then
-			printInformation("Removing directory "..path)
+			text.info("Removing directory "..path)
 			fs.delete(path)
 		end
 		return not fs.exists(path)
@@ -244,7 +234,7 @@ local TransQueue = {
 		for i = 1, #self.transactions do
 			if not self.transactions[i]:finish() then
 				--clean up already-processed transactions and exit
-				printWarning("Transaction failed! Rolling back...")
+				text.warn("Transaction failed! Rolling back...")
 				for j = i, 1, -1 do
 					self.transactions[i]:rollback()
 					return false
@@ -262,7 +252,7 @@ local TransQueue = {
 		end
 
 		--modify installed data to match the transactions succesfully executed.
-		printInformation("Updating Database")
+		text.info("Updating Database")
 		for i = 1, #fileInfoUpdates do
 			fileInfoUpdates[i]:finish()
 		end
@@ -364,7 +354,7 @@ lookupFunctions.github = function(package)
 				for str in response:gmatch('"sha":%s*"([^\"]+)",') do table.insert(fVer, str) end
 			end
 		else
-			printWarning("Can't fetch repository information")
+			text.warn("Can't fetch repository information")
 			return nil
 		end
 		local directoryContents = {}
@@ -399,7 +389,7 @@ lookupFunctions.bitbucket = function(package)
 				for str, ver in string.gmatch(string.match(response, '"files": %[(.-)%]'), '"path": "([^\"]+)".-"revision": "([^\"]+)"') do table.insert(directoryContents, {type = "file", path = str, version = ver}) end
 			end
 		else
-			printWarning("Can't fetch repository information")
+			text.warn("Can't fetch repository information")
 			return nil
 		end
 		return directoryContents
@@ -420,15 +410,15 @@ end
 
 -- Local function to download a url raw
 local function raw(url)
-	printInformation("Fetching: "..url)
+	text.info("Fetching: "..url)
 	http.request(url)
 	while true do
 		local event = {os.pullEvent()}
 		if event[1] == "http_success" then
-			printInformation("Done!")
+			text.info("Done!")
 			return event[3].readAll()
 		elseif event[1] == "http_failure" then
-			printWarning("Unable to fetch file "..event[2])
+			text.warn("Unable to fetch file "..event[2])
 			return false
 		end
 	end
@@ -512,7 +502,7 @@ downloadFunctions.grin = function(pack, env, queue)
 	end, function()
 		while true do
 			local e, msg = os.pullEvent("grin_install_status")
-			printInformation(msg)
+			text.info(msg)
 		end
 	end)
 	return status
@@ -553,7 +543,7 @@ local Package = {
 			setupArgs[1] = fs.combine(fs.combine(package.installRoot, self.target), setupArgs[1])
 			if not os.run({shell = env.shell, packman = queue:env(), pack = queue:env(), fs = new_fs}, unpack(setupArgs)) then
 				--setup script threw an error.
-				printWarning("Package "..self.fullName.." failed to install, removing")
+				text.warn("Package "..self.fullName.." failed to install, removing")
 				return self:remove(env)
 			end
 
@@ -709,7 +699,7 @@ local function addPacks(file)
 					state = "main"
 				else
 					if state ~= "dirty" then
-						printWarning("Unexpected 'name' at line "..lineCount.." in "..file)
+						text.warn("Unexpected 'name' at line "..lineCount.." in "..file)
 						state = "dirty"
 					end
 				end
@@ -720,13 +710,13 @@ local function addPacks(file)
 						state = "type"
 					else
 						if state ~= "dirty" then
-							printWarning("Unknown Repository Format at line "..lineCount.." in "..file)
+							text.warn("Unknown Repository Format at line "..lineCount.." in "..file)
 							state = "dirty"
 						end
 					end
 				else
 					if state ~= "dirty" then
-						printWarning("Unexpected 'type' at line "..lineCount.." in "..file)
+						text.warn("Unexpected 'type' at line "..lineCount.." in "..file)
 						state = "dirty"
 					end
 				end
@@ -735,7 +725,7 @@ local function addPacks(file)
 					entryTable[property] = value
 				else
 					if state ~= "dirty" then
-						printWarning("Unexpected "..property.." at line "..lineCount.." in "..file)
+						text.warn("Unexpected "..property.." at line "..lineCount.." in "..file)
 						state = "dirty"
 					end
 				end
@@ -746,7 +736,7 @@ local function addPacks(file)
 					end
 				else
 					if state ~= "dirty" then
-						printWarning("Unexpected "..property.." at line "..lineCount.." in "..file)
+						text.warn("Unexpected "..property.." at line "..lineCount.." in "..file)
 						state = "dirty"
 					end
 				end
@@ -754,7 +744,7 @@ local function addPacks(file)
 				if state == "dirty" then
 					state = ""
 				elseif state == "type" then
-					printWarning("Unexpected end at line "..lineCount.." in "..file)
+					text.warn("Unexpected end at line "..lineCount.." in "..file)
 					state = ""
 				elseif state == "main" then
 					--this line is the required entries for a valid repolist entry.
@@ -788,18 +778,18 @@ local function addPacks(file)
 				if propertyFound then
 					entryTable.download[property] = value
 				else
-					printWarning("Unexpected "..property.." at line "..lineCount.." in "..file)
+					text.warn("Unexpected "..property.." at line "..lineCount.." in "..file)
 					state = "dirty"
 				end
 			end
 			lineCount = lineCount + 1
 		end
 		if state ~= "" then
-			printWarning("Expected 'end' at line "..lineCount.." in "..file)
+			text.warn("Expected 'end' at line "..lineCount.." in "..file)
 		end
 		listHandle:close()
 	else
-		printError("Could not open repository list!")
+		text.err("Could not open repository list!")
 	end
 end
 
@@ -844,7 +834,7 @@ function load()
 						installed[file] = {[repo] = installed[name]}
 					end
 				else
-					printWarning("Couldn't open package db file: "..file)
+					text.warn("Couldn't open package db file: "..file)
 				end
 			end
 		end
