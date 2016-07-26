@@ -461,7 +461,7 @@ downloadFunctions.github = function(pack, env, queue)
 		if string.match(path, "(.-)/[^/]+$") then
 			queue:makeDir(string.match(path, "(.-)/[^/]+$"))
 		end
-		local content = raw("https://raw.github.com/"..pack.download.author.."/"..pack.download.repository.."/"..pack.download.branch.."/"..file.path)
+		local content = raw("https://raw.githubusercontent.com/"..pack.download.author.."/"..pack.download.repository.."/"..pack.download.branch.."/"..file.path)
 		if content then
 			queue:addFile(path, content, file.version)
 		else

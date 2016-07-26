@@ -4,7 +4,7 @@ local unpack = unpack or table.unpack
 local sysbranch = nil
 
 if fs.exists("etc/zpm/sysbranch") then
-	local sysbranchf = fs.open("etc/zpm/sysbranch", r)
+	local sysbranchf = fs.open("etc/zpm/sysbranch", "r")
 	sysbranch = sysbranchf.readLine()
 	sysbranchf.close()
 else
@@ -139,7 +139,7 @@ if fetch then
 		queue = package.newTransactionQueue("main/packman")
 	end
 	io.write("Updating zpm\n")
-	local remoteHandle = http.get("https://raw.github.com/Zac13422/zOS/testing/bin/zpm")
+	local remoteHandle = http.get("https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/zpm")
 	if remoteHandle then
 		if pack then
 			pack.addFile(shell.getRunningProgram(), remoteHandle.readAll())
@@ -159,7 +159,7 @@ if fetch then
 		printWarning("Could not retrieve remote file.")
 	end
 	io.write("Updating package API\n")
-	remoteHandle = http.get("https://raw.github.com/Zac13422/zOS/"..sysbranch.."/api/package")
+	remoteHandle = http.get("https://raw.githubusercontent.com/Zac13422/zOS/"..sysbranch.."/api/package")
 	if remoteHandle then
 		if pack then
 			pack.makeDir("/api")
@@ -182,7 +182,7 @@ if fetch then
 		printWarning("Could not retrieve remote file.")
 	end
 	io.write("Fetching Repository List\n")
-	remoteHandle = http.get("https://raw.github.com/Zac13422/zOS/"..sysbranch.."/etc/zpm/repolist")
+	remoteHandle = http.get("https://raw.githubusercontent.com/Zac13422/zOS/"..sysbranch.."/etc/zpm/repolist")
 	if remoteHandle then
 		if pack then
 			pack.makeDir("/etc")
