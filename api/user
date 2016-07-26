@@ -14,22 +14,22 @@ function setActualUser(user)
 end
  
 function add(user)
-    if fs.exists("data/usrlist/"..user) then
+    if fs.exists("etc/usrlist/"..user) or (user=="root") then
         print("This username is already taken.")
     else
-        local f = fs.open("data/usrlist/"..user,"w")
+        local f = fs.open("etc/usrlist/"..user,"w")
         f.close()
    
-        f = fs.open("data/usrdata/usernumber", "r")
+        f = fs.open("etc/usrdata/usernumber", "r")
         userNumber = tonumber(f.readLine()) + 1
         f.close()
  
-        fs.delete("data/usrdata/usernumber")
-        f = fs.open("data/usrdata/usernumber", "w")
+        fs.delete("etc/usrdata/usernumber")
+        f = fs.open("etc/usrdata/usernumber", "w")
         f.write(tostring(userNumber))
         f.close()
  
-        f = fs.open("data/usrdata/userlist", "a")
+        f = fs.open("etc/usrdata/userlist", "a")
         f.writeLine(tostring(user))
         f.close()
         fs.makeDir("home/"..user)
@@ -39,7 +39,7 @@ end
 function passwd(user)
     local done = false
     local file = nil
-    if (user=="root") or (fs.exists("data/usrlist/"..user)) then
+    if (user=="root") or (fs.exists("etc/usrlist/"..user)) then
  
         while not done do
             write("Enter the new password for "..user..":")
@@ -57,10 +57,10 @@ function passwd(user)
 				end
 			end
             if (passwd1==passwd2) and (passwd1~="") and (passwd2~="") then
-                if fs.exists("data/usrlist/"..user) then
-                    fs.delete("data/usrlist/"..user)
+                if fs.exists("etc/usrlist/"..user) then
+                    fs.delete("etc/usrlist/"..user)
                 end
-                file = fs.open("data/usrlist/"..user, "w")
+                file = fs.open("etc/usrlist/"..user, "w")
                 file.write(passwd1)
                 file.close()
                 done = true
