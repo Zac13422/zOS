@@ -1,7 +1,7 @@
 name = sysReset
     type = raw
 	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/sysReset
-	filename = zsh
+	filename = sysReset
     category = os
     dependencies = none
     target = /bin
