@@ -93,7 +93,7 @@ end
 
 
 local function loadPackageAPI()
-	if not package then if shell.resolveProgram("package") then os.loadAPI(shell.resolveProgram("package")) elseif fs.exists("usr/api/package") then os.loadAPI("usr/api/package") elseif not fetch then error("Could not load package API!") end end
+	if not package then if shell.resolveProgram("package") then os.loadAPI(shell.resolveProgram("package")) elseif fs.exists("api/package") then os.loadAPI("api/package") elseif not fetch then error("Could not load package API!") end end
 
 	if package then
 		
