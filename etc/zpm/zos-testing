@@ -1,4 +1,4 @@
-name = zos-testing
+name = testing-installer
     type = github
         author = Zac13422
         repository = zOS
