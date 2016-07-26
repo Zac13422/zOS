@@ -19,7 +19,7 @@ function update()
     function Download(path)
         write("[Info] Downloading "..path.."...")
       	if not fs.exists("/etc/zpm/sysbranch") then
-            data = https.get("https://raw.github.com/Zac13422/zOS/master"..path)
+            data = http.get("https://raw.github.com/Zac13422/zOS/master"..path)
         end
 		if fs.exists("/etc/zpm/sysbranch") then
 			local f = fs.open("/etc/zpm/sysbranch", "r")
