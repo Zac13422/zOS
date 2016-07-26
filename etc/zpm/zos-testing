@@ -1,3 +1,14 @@
+name = sysReset
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/sysReset
+	filename = zsh
+    category = os
+    dependencies = none
+    target = /bin
+    version = 0.3
+    size = 547500
+end
+
 name = system
     type = raw
 	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/system
@@ -217,16 +228,4 @@ name = zsh
     target = /bin
     version = 0.3
     size = 1
-end
-
-name = testing-installer
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = testing
-    category = os
-    dependencies = none
-    target = /
-    version = 0.3
-    size = 547500
 end

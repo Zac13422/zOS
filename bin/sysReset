@@ -1,12 +1,43 @@
 local answered = false
 local answer = nil
+local branch = nil
+
+
+
+
 if fs.exists("/bin/zsh") then
 	while not answered do
 		text.warn("You're about to reset the system.")
-		text.warn("This will set the branch to testing.")
 		write("Do you want to continue? (y/N) ")
 		answer = read()
 		if answer=="y" then
+			print("2 branches are available!")
+			print("1 : Master (or stable)")
+			print("2 : Testing (or unstable)")
+			local setBranch = false
+			local _branch = "none"
+			while not setBranch do
+				write("Choose the branch (1/2) >")
+				answer = read()
+       
+				if answer=="2" then
+					print("Branch have been set to testing")
+					branch = "testing"
+					setBranch = true
+				elseif answer=="1" then
+					print("Branch have been set to master")
+					branch = "master"
+					setBranch = true
+				else
+					print("[Error] Invalid number!")
+				end
+			end
+			if fs.exists("/etc/zpm/sysbranch") then
+				fs.delete("/etc/zpm/sysbranch")
+			end
+			file = fs.open("/etc/zpm/sysbranch", "w")
+			file.write(branch)
+			file.close()
 			text.info("Beginning system reset..")
 		elseif answer=="n" or answer=="" then
 			text.info("Reset cancelled.")
@@ -14,7 +45,14 @@ if fs.exists("/bin/zsh") then
 		end
 	end
 else
-	text.info("Gathering files from testing branch...")
+	if fs.exists("/etc/zpm/sysbranch") then
+		file=fs.open("/etc/zpm/sysbranch", "r")
+		branch = file.readLine()
+		file.close()
+	else
+		branch = "master
+	end
+	text.info("Gathering files from "..branch.." branch...")
 end
 
 if term.isColor() then term.setTextColor(colors.blue) end
@@ -26,8 +64,8 @@ function Done()
 end
  
 function Download(path)
-	write("[Info] Downloading "..path.."...")
-	data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/testing"..path)
+	write("[Info] Downloading "..branch.."/"..path.."...")
+	data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/"..branch..path)
         data = data.readAll()
         local file = fs.open(path, "w")
         file.write(data)

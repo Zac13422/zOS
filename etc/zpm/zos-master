@@ -1,13 +1,12 @@
-name = zos-master
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+name = sysReset
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/sysReset
+	filename = zsh
     category = os
     dependencies = none
-    target = /
+    target = /bin
     version = 0.3
-    size = 547500
+    size = 1
 end
 
 name = system
