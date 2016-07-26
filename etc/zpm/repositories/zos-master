@@ -1,17 +1,29 @@
+name = zos-master
+    type = github
+	author = Zac13422
+        repository = zOS
+        branch = master
+    category = os
+    dependencies = none
+    target = /
+    version = 0.3
+    size = 547500
+end
+
 name = sysReset
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/sysReset
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/sysReset
 	filename = sysReset
     category = os
     dependencies = none
     target = /bin
     version = 0.3
-    size = 547500
+    size = 1
 end
 
 name = system
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/system
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/system
 	filename = system
     category = api
     dependencies = none
@@ -22,7 +34,7 @@ end
 
 name = text
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/api/text
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/api/text
 	filename = text
     category = api
     dependencies = none
@@ -33,10 +45,10 @@ end
 
 name = user
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/api/user
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/api/user
 	filename = user
     category = api
-    dependencies = zos-testing/login zos-testing/logout zos-testing/useradd zos-testing/passwd
+    dependencies = zos-master/login zos-master/logout zos-master/useradd zos-master/passwd
     target = /api
     version = 0.3
     size = 1
@@ -44,7 +56,7 @@ end
 
 name = cd
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/cd
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/cd
 	filename = cd
     category = core-bin
     dependencies = none
@@ -55,7 +67,7 @@ end
 
 name = cp
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/cp
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/cp
 	filename = cp
     category = core-bin
     dependencies = none
@@ -66,7 +78,7 @@ end
 
 name = date
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/date
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/date
 	filename = date
     category = core-bin
     dependencies = none
@@ -77,7 +89,7 @@ end
 
 name = edit
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/edit
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/edit
 	filename = edit
     category = core-bin
     dependencies = none
@@ -88,7 +100,7 @@ end
 
 name = login
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/hidden/login
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/hidden/login
 	filename = login
     category = core-bin
     dependencies = none
@@ -99,7 +111,7 @@ end
 
 name = logout
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/logout
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/logout
 	filename = logout
     category = core-bin
     dependencies = none
@@ -110,7 +122,7 @@ end
 
 name = lua
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/lua
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/lua
 	filename = lua
     category = core-bin
     dependencies = none
@@ -121,7 +133,7 @@ end
 
 name = mkdir
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/mkdir
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/mkdir
 	filename = mkdir
     category = core-bin
     dependencies = none
@@ -132,7 +144,7 @@ end
 
 name = mv
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/mv
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/mv
 	filename = mv
     category = core-bin
     dependencies = none
@@ -143,7 +155,7 @@ end
 
 name = passwd
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/passwd
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/passwd
 	filename = passwd
     category = core-bin
     dependencies = none
@@ -154,7 +166,7 @@ end
 
 name = pwd
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/pwd
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/pwd
 	filename = pwd
     category = core-bin
     dependencies = none
@@ -165,10 +177,10 @@ end
 
 name = reboot
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/reboot
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/reboot
 	filename = reboot
     category = core-bin
-    dependencies = zos-testing/user
+    dependencies = zos-master/user
     target = /bin
     version = 0.3
     size = 1
@@ -176,10 +188,10 @@ end
 
 name = rename
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/rename
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/rename
 	filename = rename
     category = core-bin
-    dependencies = zos-testing/user
+    dependencies = zos-master/user
     target = /bin
     version = 0.3
     size = 1
@@ -189,9 +201,9 @@ name = rm
     type = github
         author = Zac13422
         repository = zOS
-        branch = testing
+        branch = master
     category = core-bin
-    dependencies = zos-testing/user
+    dependencies = zos-master/user
     target = /bin
     version = 0.3
     size = 1
@@ -199,10 +211,10 @@ end
 
 name = shutdown
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/shutdown
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/shutdown
 	filename = shutdown
     category = core-bin
-    dependencies = zos-testing/user
+    dependencies = zos-master/user
     target = /bin
     version = 0.3
     size = 1
@@ -210,7 +222,7 @@ end
 
 name = useradd
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/useradd
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/useradd
 	filename = useradd
     category = core-bin
     dependencies = none
@@ -221,10 +233,10 @@ end
 
 name = zsh
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/zsh
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/zsh
 	filename = zsh
     category = core-bin
-    dependencies = zos-testing/user
+    dependencies = zos-master/user
     target = /bin
     version = 0.3
     size = 1

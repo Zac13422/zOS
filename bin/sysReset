@@ -105,4 +105,4 @@ Download("/bin/zpm")
 Download("/bin/zsh")
 Download("/bin/useradd")
 
-system.loadAllSysAPI()
+os.reboot()
