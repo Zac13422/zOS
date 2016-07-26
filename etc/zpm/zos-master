@@ -4,214 +4,186 @@ name = zos-master
         repository = zOS
         branch = master
     category = os
-    dependencies = zos-master/text zos-master/system zos-master/zsh zos-master/core-bins
+    dependencies = none
     target = /tmp
     version = 0.3
-    size = 0
-end
-
-name = core-bins
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
-    category = os
-    dependencies = zos-master/cd zos-master/cp zos-master/date zos-master/edit zos-master/lua zos-master/mkdir zos-master/mv zos-master/pwd zos-master/reboot zos-master/rename zos-master/rm zos-master/shutdown
-    target = /tmp
-    version = 0.3
-    size = 0
+    size = 547500
 end
 
 name = system
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/system
+	filename = system
     category = api
     dependencies = none
     target = /api
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = text
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/api/text
+	filename = text
     category = api
     dependencies = none
     target = /api
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = user
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/api/user
+	filename = user
     category = api
     dependencies = zos-master/login zos-master/logout zos-master/useradd zos-master/passwd
     target = /api
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = cd
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/cd
+	filename = cd
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = cp
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/cp
+	filename = cp
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = date
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/date
+	filename = date
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = edit
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/edit
+	filename = edit
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = login
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/hidden/login
+	filename = login
     category = core-bin
     dependencies = none
     target = /bin/hidden
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = logout
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/logout
+	filename = logout
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = lua
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/lua
+	filename = lua
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = mkdir
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/mkdir
+	filename = mkdir
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = mv
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/mv
+	filename = mv
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = passwd
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/passwd
+	filename = passwd
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = pwd
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/pwd
+	filename = pwd
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = reboot
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/reboot
+	filename = reboot
     category = core-bin
     dependencies = zos-master/user
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = rename
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/rename
+	filename = rename
     category = core-bin
     dependencies = zos-master/user
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = rm
@@ -223,41 +195,38 @@ name = rm
     dependencies = zos-master/user
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = shutdown
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/shutdown
+	filename = shutdown
     category = core-bin
     dependencies = zos-master/user
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = useradd
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/useradd
+	filename = useradd
     category = core-bin
     dependencies = none
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
 
 name = zsh
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = master
+    type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/master/bin/zsh
+	filename = zsh
     category = core-bin
     dependencies = zos-master/user
     target = /bin
     version = 0.3
-    size = 0
+    size = 1
 end
