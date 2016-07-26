@@ -2,12 +2,16 @@ local answered = false
 local answer = nil
 local branch = nil
 
-
-
+if fs.exists("/api/user") then
+	if user.getActualUser ~= "root" then
+		print("You don't have the permission to do that!")
+		return
+	end
+end
 
 if fs.exists("/bin/zsh") then
 	while not answered do
-		text.warn("You're about to reset the system.")
+		print("[Warn] You're about to reset the system.")
 		write("Do you want to continue? (y/N) ")
 		answer = read()
 		if answer=="y" then
@@ -38,9 +42,10 @@ if fs.exists("/bin/zsh") then
 			file = fs.open("/etc/zpm/sysbranch", "w")
 			file.write(branch)
 			file.close()
-			text.info("Beginning system reset..")
+			print("[Info] Beginning system reset..")
+			answered = true
 		elseif answer=="n" or answer=="" then
-			text.info("Reset cancelled.")
+			print("[Info] Reset cancelled.")
 			return
 		end
 	end
@@ -50,9 +55,9 @@ else
 		branch = file.readLine()
 		file.close()
 	else
-		branch = "master
+		branch = "master"
 	end
-	text.info("Gathering files from "..branch.." branch...")
+	print("[Info] Gathering files from "..branch.." branch...")
 end
 
 if term.isColor() then term.setTextColor(colors.blue) end
@@ -64,7 +69,7 @@ function Done()
 end
  
 function Download(path)
-	write("[Info] Downloading "..branch.."/"..path.."...")
+	write("[Info] Downloading "..branch..path.."...")
 	data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/"..branch..path)
         data = data.readAll()
         local file = fs.open(path, "w")
@@ -74,10 +79,10 @@ function Download(path)
 end
  
 
-text.info("Deleting old files...")
+write("[Info] Deleting old files...")
 fs.delete("/api/*")
 fs.delete("/bin/*")
-Done()s
+Done()
       
 Download("/.settings")
 Download("/startup")
