@@ -201,7 +201,7 @@ local TransQueue = {
 		}
 	end,
 	finish = function(self)
-		local installedFile = fs.combine(fs.combine(package.installRoot, "/etc/.installed"), self.pack.fullName)
+		local installedFile = fs.combine(fs.combine(package.installRoot, "/etc/zpm/.installed"), self.pack.fullName)
 		local installedData = {}
 		if installed[self.pack.fullName] and fs.exists(installedFile) then
 			local handle = io.open(installedFile, "r")
@@ -276,7 +276,7 @@ local TransQueue = {
 		else
 			--write out file again, if any content exists for it.
 			table.insert(installedData, 1, tostring(self.pack.version))
-			if not fs.exists(fs.combine(fs.combine(package.installRoot, "/etc/.installed"), self.pack.repo)) then fs.makeDir(fs.combine(fs.combine(package.installRoot, "/etc/.installed"), self.pack.repo)) end
+			if not fs.exists(fs.combine(fs.combine(package.installRoot, "/etc/zpm/.installed"), self.pack.repo)) then fs.makeDir(fs.combine(fs.combine(package.installRoot, "/etc/zpm/.installed"), self.pack.repo)) end
 			local handle = io.open(installedFile, "w")
 			if handle then
 				for k, v in ipairs(installedData) do
@@ -354,7 +354,7 @@ lookupFunctions.github = function(package)
 				for str in response:gmatch('"sha":%s*"([^\"]+)",') do table.insert(fVer, str) end
 			end
 		else
-			text.warn("Can't fetch repository information")
+			text.warn("Can't fetc/zpmh repository information")
 			return nil
 		end
 		local directoryContents = {}
@@ -389,7 +389,7 @@ lookupFunctions.bitbucket = function(package)
 				for str, ver in string.gmatch(string.match(response, '"files": %[(.-)%]'), '"path": "([^\"]+)".-"revision": "([^\"]+)"') do table.insert(directoryContents, {type = "file", path = str, version = ver}) end
 			end
 		else
-			text.warn("Can't fetch repository information")
+			text.warn("Can't fetc/zpmh repository information")
 			return nil
 		end
 		return directoryContents
@@ -410,7 +410,7 @@ end
 
 -- Local function to download a url raw
 local function raw(url)
-	text.info("Fetching: "..url)
+	text.info("Fetc/zpmhing: "..url)
 	http.request(url)
 	while true do
 		local event = {os.pullEvent()}
@@ -418,7 +418,7 @@ local function raw(url)
 			text.info("Done!")
 			return event[3].readAll()
 		elseif event[1] == "http_failure" then
-			text.warn("Unable to fetch file "..event[2])
+			text.warn("Unable to fetc/zpmh file "..event[2])
 			return false
 		end
 	end
@@ -444,7 +444,7 @@ end
 
 downloadFunctions.github = function(pack, env, queue)
 	local contents = lookupFunctions.github(pack)
-	if not contents then return nil, "content fetch failure" end
+	if not contents then return nil, "content fetc/zpmh failure" end
 	local localTarget = pack.target or ""
 	for num, file in ipairs(contents) do
 		local path = fs.combine(localTarget, file.path)
@@ -797,20 +797,20 @@ function load()
 	for k, v in pairs(package.list) do
 		package.list[k] = nil
 	end
-	if fs.exists("/etc/repositories") then
-		for _, file in ipairs(fs.list("/etc/repositories")) do
-			addPacks(fs.combine("/etc/repositories", file))
+	if fs.exists("/etc/zpm/repositories") then
+		for _, file in ipairs(fs.list("/etc/zpm/repositories")) do
+			addPacks(fs.combine("/etc/zpm/repositories", file))
 		end
 	end
 
 	for k, v in pairs(package.installed) do
 		package.installed[k] = nil
 	end
-	if fs.exists(fs.combine(package.installRoot, "/etc/.installed")) and fs.isDir(fs.combine(package.installRoot, "/etc/.installed")) then
-		for _, repo in ipairs(fs.list(fs.combine(package.installRoot, "/etc/.installed"))) do
-			for _, file in ipairs(fs.list(fs.combine(fs.combine(package.installRoot, "/etc/.installed"), repo))) do
+	if fs.exists(fs.combine(package.installRoot, "/etc/zpm/.installed")) and fs.isDir(fs.combine(package.installRoot, "/etc/zpm/.installed")) then
+		for _, repo in ipairs(fs.list(fs.combine(package.installRoot, "/etc/zpm/.installed"))) do
+			for _, file in ipairs(fs.list(fs.combine(fs.combine(package.installRoot, "/etc/zpm/.installed"), repo))) do
 				local name = repo.."/"..file
-				local handle = io.open(fs.combine(fs.combine(fs.combine(package.installRoot, "/etc/.installed"), repo), file), "r")
+				local handle = io.open(fs.combine(fs.combine(fs.combine(package.installRoot, "/etc/zpm/.installed"), repo), file), "r")
 				if handle then
 					installed[name] = {files = {}}
 					local packVersion
