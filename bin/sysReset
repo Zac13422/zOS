@@ -79,10 +79,7 @@ function Download(path)
 end
  
 
-write("[Info] Deleting old files...")
-fs.delete("/api/*")
-fs.delete("/bin/*")
-Done()
+
       
 Download("/.settings")
 Download("/startup")
