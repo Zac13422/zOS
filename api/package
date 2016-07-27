@@ -410,7 +410,7 @@ end
 
 -- Local function to download a url raw
 local function raw(url)
-	text.info("Fetching: "..fullName)
+	text.info("Fetching: "..pack.repo.."/"..pack.name)
 	http.request(url)
 	while true do
 		local event = {os.pullEvent()}
