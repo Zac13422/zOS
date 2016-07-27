@@ -1,7 +1,7 @@
 name = zos-testing
     type = meta
     category = os
-    dependencies = zos-testing/sysreset zos-testing/mv zos-testing/cd zos-testing/cp zos-testing/date zos-testing/edit zos-testing/pwd zos-testing/reboot zos-testing/rename zos-testing/rm zos-testing/shutdown zos-testing/login zos-testing/logout zos-testing/useradd zos-testing/passwd zos-testing/lua zos-testing/mkdir zos-testing/text zos-testing/system zos-testing/user zos-testing/zsh
+    dependencies = zos-testing/sysreset zos-testing/mv zos-testing/cd zos-testing/cp zos-testing/date zos-testing/edit zos-testing/pwd zos-testing/reboot zos-testing/rename zos-testing/rm zos-testing/shutdown zos-testing/login zos-testing/logout zos-testing/useradd zos-testing/passwd zos-testing/lua zos-testing/mkdir zos-testing/text zos-testing/system zos-testing/user zos-testing/zsh zos-testing/startup zos-testing/settings
     target = /bin
     version = 0.3t
     size = 1
