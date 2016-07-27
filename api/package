@@ -409,8 +409,8 @@ lookupFunctions.bitbucket = function(package)
 end
 
 -- Local function to download a url raw
-local function raw(url)
-	text.info("Fetching: "..fullName)
+local function raw(url, name)
+	text.info("Fetching: "..name)
 	http.request(url)
 	while true do
 		local event = {os.pullEvent()}
@@ -443,6 +443,7 @@ downloadFunctions.raw = function(pack, env, queue)
 end
 
 downloadFunctions.github = function(pack, env, queue)
+	fullName = pack.repo.."/"..pack.name
 	local contents = lookupFunctions.github(pack)
 	if not contents then return nil, "content fetch failure" end
 	local localTarget = pack.target or ""
@@ -451,7 +452,7 @@ downloadFunctions.github = function(pack, env, queue)
 		if string.match(path, "(.-)/[^/]+$") then
 			queue:makeDir(string.match(path, "(.-)/[^/]+$"))
 		end
-		local content = raw("https://raw.githubusercontent.com/"..pack.download.author.."/"..pack.download.repository.."/"..pack.download.branch.."/"..file.path)
+		local content = raw("https://raw.githubusercontent.com/"..pack.download.author.."/"..pack.download.repository.."/"..pack.download.branch.."/"..file.path, fullName)
 		if content then
 			queue:addFile(path, content, file.version)
 		else
@@ -462,6 +463,7 @@ downloadFunctions.github = function(pack, env, queue)
 end
 
 downloadFunctions.bitbucket = function(pack, env, queue)
+	fullName = pack.repo.."/"..pack.name
 	local contents = lookupFunctions.bitbucket(pack)
 	local localTarget = pack.target or ""
 	for num, file in ipairs(contents) do
@@ -469,7 +471,7 @@ downloadFunctions.bitbucket = function(pack, env, queue)
 		if string.match(path, "(.-)/[^/]+$") then
 			queue:makeDir(string.match(path, "(.-)/[^/]+$"))
 		end
-		local content = raw("https://bitbucket.org/"..pack.download.author.."/"..pack.download.repository.."/raw/"..pack.download.branch.."/"..file.path)
+		local content = raw("https://bitbucket.org/"..pack.download.author.."/"..pack.download.repository.."/raw/"..pack.download.branch.."/"..file.path, fullName)
 		if content then
 			queue:addFile(path, content, file.version)
 		else
@@ -485,7 +487,7 @@ downloadFunctions.pastebin = function(pack, env, queue)
 	if string.match(path, "(.-)/[^/]+$") then
 		queue:makeDir(string.match(path, "(.-)/[^/]+$"))
 	end
-	local content = raw("http://pastebin.com/raw.php?i="..pack.download.url)
+	local content = raw("http://pastebin.com/raw.php?i="..pack.download.url, pack.name)
 	if content then
 		queue:addFile(path, content)
 		return true
