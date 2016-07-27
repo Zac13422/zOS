@@ -1,7 +1,7 @@
 name = zos-master
     type = meta
     category = os
-    dependencies = zos-master/sysreset zos-master/mv zos-master/cd zos-master/cp zos-master/date zos-master/edit zos-master/pwd zos-master/reboot zos-master/rename zos-master/rm zos-master/shutdown zos-master/login zos-master/logout zos-master/useradd zos-master/passwd zos-master/lua zos-master/mkdir
+    dependencies = zos-master/sysreset zos-master/mv zos-master/cd zos-master/cp zos-master/date zos-master/edit zos-master/pwd zos-master/reboot zos-master/rename zos-master/rm zos-master/shutdown zos-master/login zos-master/logout zos-master/useradd zos-master/passwd zos-master/lua zos-master/mkdir zos-master/text zos-master/system zos-master/user zos-master/zsh
     target = /bin
     version = 0.3
     size = 1
