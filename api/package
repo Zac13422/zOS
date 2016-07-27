@@ -410,7 +410,7 @@ end
 
 -- Local function to download a url raw
 local function raw(url)
-	text.info("Fetching: "..pack.repo.."/"..pack.name)
+	text.info("Fetching: "..fullName)
 	http.request(url)
 	while true do
 		local event = {os.pullEvent()}
@@ -495,7 +495,7 @@ downloadFunctions.pastebin = function(pack, env, queue)
 end
 
 downloadFunctions.grin = function(pack, env, queue)
-	local fullName = pack.repo.."/"..pack.name
+	fullName = pack.repo.."/"..pack.name
 	local status
 	parallel.waitForAny(function()
 		status = env.shell.run("pastebin run VuBNx3va -e -u", pack.download.author, "-r", pack.download.repository, fs.combine(fs.combine(package.installRoot, pack.target), pack.name))
