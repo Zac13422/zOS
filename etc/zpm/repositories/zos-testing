@@ -20,7 +20,7 @@ end
 
 name = system
     type = raw
-	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/system
+	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/api/system
 	filename = system
     category = api
     dependencies = none
