@@ -409,13 +409,13 @@ lookupFunctions.bitbucket = function(package)
 end
 
 -- Local function to download a url raw
-local function raw(url, name)
-	text.info("Fetching: "..name)
+local function raw(url)
+	write("Fetching: "..url)
 	http.request(url)
 	while true do
 		local event = {os.pullEvent()}
 		if event[1] == "http_success" then
-			text.info("Done!")
+			print("Done!")
 			return event[3].readAll()
 		elseif event[1] == "http_failure" then
 			text.warn("Unable to fetch file "..event[2])
@@ -452,7 +452,7 @@ downloadFunctions.github = function(pack, env, queue)
 		if string.match(path, "(.-)/[^/]+$") then
 			queue:makeDir(string.match(path, "(.-)/[^/]+$"))
 		end
-		local content = raw("https://raw.githubusercontent.com/"..pack.download.author.."/"..pack.download.repository.."/"..pack.download.branch.."/"..file.path, fullName)
+		local content = raw("https://raw.githubusercontent.com/"..pack.download.author.."/"..pack.download.repository.."/"..pack.download.branch.."/"..file.path)
 		if content then
 			queue:addFile(path, content, file.version)
 		else
@@ -471,7 +471,7 @@ downloadFunctions.bitbucket = function(pack, env, queue)
 		if string.match(path, "(.-)/[^/]+$") then
 			queue:makeDir(string.match(path, "(.-)/[^/]+$"))
 		end
-		local content = raw("https://bitbucket.org/"..pack.download.author.."/"..pack.download.repository.."/raw/"..pack.download.branch.."/"..file.path, fullName)
+		local content = raw("https://bitbucket.org/"..pack.download.author.."/"..pack.download.repository.."/raw/"..pack.download.branch.."/"..file.path)
 		if content then
 			queue:addFile(path, content, file.version)
 		else
@@ -487,7 +487,7 @@ downloadFunctions.pastebin = function(pack, env, queue)
 	if string.match(path, "(.-)/[^/]+$") then
 		queue:makeDir(string.match(path, "(.-)/[^/]+$"))
 	end
-	local content = raw("http://pastebin.com/raw.php?i="..pack.download.url, pack.name)
+	local content = raw("http://pastebin.com/raw.php?i="..pack.download.url)
 	if content then
 		queue:addFile(path, content)
 		return true
