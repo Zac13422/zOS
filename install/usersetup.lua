@@ -5,7 +5,7 @@ file.write("0")
 file.close()
 
 os.loadAPI("/api/api")
-api.loadAll()
+api.loadAll(0)
 
 term.setCursorPos(1,3)
 write("Enter your computer name:")
