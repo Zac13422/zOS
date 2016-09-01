@@ -1,0 +1,21 @@
+function load(api)
+	if not fs.exists("/lib/"..api) or not fs.exists("/usr/lib"..api) then
+		text.err("The API "..api.."doesn't exist.")
+		return
+	elseif fs.exists("/lib/"..api) then
+		os.loadAPI("/lib/..api")
+		text.info("Loaded /lib/"..api)
+	elseif fs.exists("/usr/lib/"..api) then
+		os.loadAPI("/usr/lib/..api")
+		text.info("Loaded /usr/lib/"..api)
+	end	
+end
+
+function loadAll()
+	apiList = fs.list("/lib") + fs.list("/usr/lib")
+	write("[Info] Reloading all APIs...")	
+	for i=1, #apiList do
+		load(apiList[i])
+	end
+	text.done()
+end

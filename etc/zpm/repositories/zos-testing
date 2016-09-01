@@ -217,10 +217,9 @@ name = rename
 end
 
 name = rm
-    type = github
-        author = Zac13422
-        repository = zOS
-        branch = testing
+	type = raw
+	url = https://raw.githubusercontent.com/Zac13422/zOS/testing/bin/rm
+	filename = rm
     category = core-bin
     dependencies = none
     target = /bin

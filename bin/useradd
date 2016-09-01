@@ -12,6 +12,7 @@ else
 	
 	for i=1, #args do
 		user.add(args[i])
+    end
  	end
 end
 

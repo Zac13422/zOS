@@ -1,9 +1,10 @@
 os.pullEvent = os.pullEventRaw
 
 fs.delete("/tmp/*")
-os.loadAPI("api/user")
-os.loadAPI("api/system")
-system.loadAllSysAPI()
+os.loadAPI("lib/user")
+os.loadAPI("lib/text")
+os.loadAPI("lib/api")
+api.loadAll()
 shell.setPath("/bin:/usr/bin:/bin/ccUnchanged")
 
 if term.isColor() then
@@ -28,5 +29,5 @@ shell.clearAlias("rm")
 shell.clearAlias("sh")
 
 os.loadAPI("/bin/zsh")
-shell.run("/bin/hidden/login")
+shell.run("/boot/login")
 shell.run("/bin/zsh")

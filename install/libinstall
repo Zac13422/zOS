@@ -1,0 +1,41 @@
+
+function testColor(color)
+	if term.isColor() then
+		term.setTextColor(color)
+	end
+end
+function callInterface()
+	local x, y = term.getCursorPos()
+	term.clear()
+	
+	term.setCursorPos(1,1)
+	testColor(colors.red)
+	write("zOS Installer")
+	
+	term.setCursorPos(41, 1)
+	testColor(colors.yellow)
+	write("Version 0.3")
+	
+	term.setCursorPos(1,18)
+	write("Current step:")
+	
+	term.setCursorPos(1, 19)
+	testColor(colors.green)
+	write("Install progress:")
+end
+function setProgress(p)
+	testColor(colors.green)
+	local str = ""
+	if progress~=0 then
+		for i=1, p do
+			str = str.."#"
+		end
+	end
+	term.setCursorPos(18,19)
+	write(str)
+end
+
+function setStep(s)
+	term.setCursorPos(14,18)
+	write(s)
+end

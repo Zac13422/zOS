@@ -36,38 +36,46 @@ function add(user)
     end
 end
  
-function passwd(user)
+function passwd(user,passwd1)
     local done = false
     local file = nil
-    if (user=="root") or (fs.exists("etc/usrlist/"..user)) then
+	if passwd1==nil then
+		if (user=="root") or (fs.exists("etc/usrlist/"..user)) then
  
-        while not done do
-            write("Enter the new password for "..user..":")
-            passwd1 = read("#")
-            write("Type the password again:")
-            passwd2 = read("#")
+			while not done do
+				write("Enter the new password for "..user..":")
+				passwd1 = read("#")
+				write("Type the password again:")
+				passwd2 = read("#")
 
-            if passwd1~= passwd2 then
-                print("The passwords don't match.")
-            end
-            if (passwd1==passwd2) and (passwd1=="") or (passwd2=="") then
-				text.err("Invalid password")
-				if term.isColor() then
-					term.setTextColor(colors.blue)
+				if passwd1~= passwd2 then
+					print("The passwords don't match.")
+				end
+				if (passwd1==passwd2) and (passwd1=="") or (passwd2=="") then
+					text.err("Invalid password")
+					if term.isColor() then
+						term.setTextColor(colors.blue)
+					end
+				end
+				if (passwd1==passwd2) and (passwd1~="") and (passwd2~="") then
+					if fs.exists("etc/usrlist/"..user) then
+						fs.delete("etc/usrlist/"..user)
+					end
+					file = fs.open("etc/usrlist/"..user, "w")
+					file.write(passwd1)
+					file.close()
+					done = true
 				end
 			end
-            if (passwd1==passwd2) and (passwd1~="") and (passwd2~="") then
-                if fs.exists("etc/usrlist/"..user) then
-                    fs.delete("etc/usrlist/"..user)
-                end
-                file = fs.open("etc/usrlist/"..user, "w")
-                file.write(passwd1)
-                file.close()
-                done = true
-            end
-        end
-    else
-        print("The user do not exists")
-    end
- 
+		else
+			print("The user do not exists")
+		end
+	else
+		if fs.exists("etc/usrlist/"..user) then
+			fs.delete("etc/usrlist/"..user)
+		end
+		file = fs.open("etc/usrlist/"..user, "w")
+		file.write(passwd1)
+		file.close()
+	end
 end
