@@ -18,7 +18,9 @@ function load(api,v)
 end
 
 function loadAll(v)
-	apiList = fs.list("/api") + fs.list("/usr/api")
+	apiList = {}
+	table.insert(apiList,fs.list("/api"))
+	table.insert(apiList,fs.list("/usr/api"))
 	if v==1 then
 		write("[Info] Reloading all APIs...")	
 	end
