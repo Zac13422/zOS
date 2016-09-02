@@ -1,31 +1,60 @@
 function load(api,v)
 	if not fs.exists("/api/"..api) or not fs.exists("/usr/api"..api) then
 		if v==1 then
-			text.err("The API "..api.."doesn't exist.")
+			write("The API "..api.."doesn't exist.")
 		end
 		return
 	elseif fs.exists("/api/"..api) then
 		os.loadAPI("/api/..api")
 		if v==1 then
-			text.info("Loaded /api/"..api)
+			write("Loaded /api/"..api)
 		end
 	elseif fs.exists("/usr/api/"..api) then
 		os.loadAPI("/usr/api/..api")
 		if v==1 then
-			text.info("Loaded /usr/api/"..api)
+			write("Loaded /usr/api/"..api)
 		end
 	end	
 end
 
-function loadAll(v)
-	apiList = {}
-	table.insert(apiList,fs.list("/api"))
-	table.insert(apiList,fs.list("/usr/api"))
+function loadSystem(v)
+	local x,y = term.getCursorPos()
+	local apiList = fs.list("/api")
 	if v==1 then
-		write("[Info] Reloading all APIs...")	
+		write("[    ] Reloading system APIs...")
+		text.work(2,y)
 	end
 	for i=1, #apiList do
-		load(apiList[i],v)
+		load(apiList[i],0)
 	end
-	text.done()
+	if v==1 then
+		text.done(2,y)
+	end
+end
+
+function loadUser(v)
+	local x,y = term.getCursorPos()
+	local apiList = fs.list("/usr/api")
+	if v==1 then
+		write("[    ] Reloading user APIs...")
+		text.work(2,y)
+	end
+	for i=1, #apiList do
+		load(apiList[i],0)
+	end
+	if v==1 then
+		text.done(2,y)
+	end
+end
+
+
+function loadAll(v)
+	if v==1 then
+		loadSystem(1)
+		loadUser(1)
+	end
+	if v==0 then
+		loadSystem(0)
+		loadUser(0)
+	end
 end

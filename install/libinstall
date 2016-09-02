@@ -24,15 +24,18 @@ function callInterface()
 	write("Install progress:")
 end
 function setProgress(p)
+	local oback = term.getBackgroundColor()
 	testColor(colors.green)
 	local str = ""
 	if progress~=0 then
 		for i=1, p do
-			str = str.."#"
+			str = str.." "
 		end
 	end
+	term.setBackgroundColor(colors.green)
 	term.setCursorPos(18,19)
 	write(str)
+	term.setBackgroundColor(oback)
 end
 
 function setStep(s)

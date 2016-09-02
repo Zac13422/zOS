@@ -1,5 +1,31 @@
 --Text API
- 
+
+function work(xp,yp)
+	local oxp, oyp = term.getCursorPos()
+	if term.isColor() then
+		term.setTextColor(colors.blue)
+	end
+	term.setCursorPos(xp,yp)
+	print("WORK")
+	term.setCursorPos(oxp,oyp)
+	if term.isColor() then
+		term.setTextColor(colors.blue)
+	end
+end
+
+function done(xp,yp)
+	local oxp, oyp = term.getCursorPos()
+	if term.isColor() then
+		term.setTextColor(colors.lime)
+	end
+	term.setCursorPos(xp,yp)
+	print("DONE")
+	term.setCursorPos(oxp,oyp)
+	if term.isColor() then
+		term.setTextColor(colors.blue)
+	end
+end
+
 function out(text, color1, color2, xb, yb)
 local setCursor = false
     if (xb~=nil) or (yb~=nil) then
