@@ -4,7 +4,7 @@ fs.delete("/tmp/*")
 fs.makeDir("/tmp")
 os.loadAPI("/api/text")
 os.loadAPI("/api/api")
-api.loadAll()
+api.loadAll(1)
 shell.setPath("/bin:/usr/bin:/bin/ccUnchanged")
 
 if term.isColor() then
