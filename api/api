@@ -1,10 +1,5 @@
 function load(api,v)
-	if not fs.exists("/api/"..api) or not fs.exists("/usr/api"..api) then
-		if v==1 then
-			write("The API "..api.."doesn't exist.")
-		end
-		return
-	elseif fs.exists("/api/"..api) then
+	if fs.exists("/api/"..api) then
 		os.loadAPI("/api/..api")
 		if v==1 then
 			write("Loaded /api/"..api)
@@ -14,6 +9,11 @@ function load(api,v)
 		if v==1 then
 			write("Loaded /usr/api/"..api)
 		end
+	else
+		if v==1 then
+			write("The API "..api.."doesn't exist.")
+		end
+		return
 	end	
 end
 

@@ -152,8 +152,7 @@ repeat
 		shell.run("/tmp/installbase.lua")
 		Done(8,10)
 		
-		libinstall.callInterface()
-		libinstall.setProgress(17)
+		
 		shell.run("/tmp/usersetup.lua")
 		
 	elseif selection=="n" then
