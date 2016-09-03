@@ -5,7 +5,7 @@ repo.write(_branch)
 repo.close()
 
 function Download(path)
-	libinstall.setStep("Downloading ".._branch..path.."...")
+	libinstall.setStep("Downloading ".._branch..path.."                   ")
 	data = http.get("https://raw.githubusercontent.com/Zac13422/zOS/".._branch..path)
 	data = data.readAll()
 	local file = fs.open(path, "w")

@@ -1,9 +1,9 @@
 os.pullEvent = os.pullEventRaw
 
 fs.delete("/tmp/*")
-os.loadAPI("lib/user")
-os.loadAPI("lib/text")
-os.loadAPI("lib/api")
+fs.makeDir("/tmp")
+os.loadAPI("/api/text")
+os.loadAPI("/api/api")
 api.loadAll()
 shell.setPath("/bin:/usr/bin:/bin/ccUnchanged")
 

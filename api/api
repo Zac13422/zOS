@@ -51,10 +51,12 @@ end
 function loadAll(v)
 	if v==1 then
 		loadSystem(1)
+		print("")
 		loadUser(1)
 	end
 	if v==0 then
 		loadSystem(0)
+		print("")
 		loadUser(0)
 	end
 end

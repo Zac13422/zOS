@@ -17,6 +17,7 @@ function callInterface()
 	write("Version 0.3")
 	
 	term.setCursorPos(1,18)
+	testColor(colors.blue)
 	write("Current step:")
 	
 	term.setCursorPos(1, 19)
@@ -39,6 +40,9 @@ function setProgress(p)
 end
 
 function setStep(s)
+	local color=term.getTextColor()
 	term.setCursorPos(14,18)
+	testColor(colors.blue)
 	write(s)
+	testColor(color)
 end

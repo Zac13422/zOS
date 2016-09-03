@@ -155,6 +155,15 @@ repeat
 		
 		shell.run("/tmp/usersetup.lua")
 		
+		libinstall.setStep("Rebooting in 3 seconds")
+		os.sleep(1)
+		libinstall.setStep("Rebooting in 2 seconds")
+		os.sleep(1)
+		libinstall.setStep("Rebooting in 1 second")
+		os.sleep(1)
+		libinstall.setStep("Rebooting...")
+		os.reboot()
+		
 	elseif selection=="n" then
 		term.setBackgroundColor(colors.black)
 		term.clear()

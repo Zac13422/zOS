@@ -29,7 +29,7 @@ term.setCursorPos(1,6)
 local done = false
 while not done do
 	write("Enter root password:")
-	rootPass = read()
+	rootPass = read("*")
 	if rootPass=="" then
 		term.setCursorPos(35,6)
 		print("Invalid password")
@@ -38,7 +38,7 @@ while not done do
 		write("                                                   ")
 	else
 		done = true
-		user.passwd(root,rootPass)
+		user.passwd("root",rootPass)
 	end
 end
 done = false
@@ -49,8 +49,8 @@ term.setCursorPos(1,7)
 local done = false
 while not done do
 	write("Enter your username:")
-	user = read()
-	if user=="" then
+	userName = read()
+	if userName=="" then
 		term.setCursorPos(35,7)
 		print("Invalid username")
 		os.sleep(1)
@@ -58,7 +58,7 @@ while not done do
 		write("                                                   ")
 	else
 		done = true
-		user.add(user)
+		user.add(userName)
 	end
 end
 done = false
@@ -68,8 +68,8 @@ libinstall.setProgress(31)
 term.setCursorPos(1,8)
 local done = false
 while not done do
-	write("Enter the password for "..user..":")
-	pass = read()
+	write("Enter the password for "..userName..":")
+	pass = read("*")
 	if pass=="" then
 		term.setCursorPos(35,8)
 		print("Invalid password")
@@ -78,7 +78,7 @@ while not done do
 		write("                                                   ")
 	else
 		done = true
-		user.passwd(user,pass)
+		user.passwd(userName,pass)
 	end
 end
 done = false
