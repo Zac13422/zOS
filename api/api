@@ -1,11 +1,11 @@
 function load(api,v)
 	if fs.exists("/api/"..api) then
-		os.loadAPI("/api/..api")
+		os.loadAPI("/api/"..api)
 		if v==1 then
 			write("Loaded /api/"..api)
 		end
 	elseif fs.exists("/usr/api/"..api) then
-		os.loadAPI("/usr/api/..api")
+		os.loadAPI("/usr/api/"..api)
 		if v==1 then
 			write("Loaded /usr/api/"..api)
 		end
