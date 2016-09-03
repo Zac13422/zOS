@@ -1,3 +1,5 @@
+fs.delete("copyccbin.lua")
+
 libinstall.setStep("Setting system branch")
 fs.makeDir("/etc/zpm")
 local repo = fs.open("/etc/zpm/sysbranch", "w")

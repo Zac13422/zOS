@@ -1,3 +1,5 @@
+fs.delete("/tmp/installbase.lua")
+
 libinstall.callInterface()
 libinstall.setProgress(17)
 

@@ -1,3 +1,5 @@
+fs.delete("/tmp/format.lua")
+
 libinstall.setStep("Making directory /api")
 fs.makeDir("/api")
 

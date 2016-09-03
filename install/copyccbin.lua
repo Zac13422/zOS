@@ -1,3 +1,5 @@
+fs.delete("mksysdir.lua")
+
 libinstall.setStep("Copying computercraft programs")
 fs.copy("/rom/programs", "/bin/ccUnchanged")
 fs.delete("/bin/ccUnchanged/cd")

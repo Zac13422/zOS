@@ -1,3 +1,5 @@
+fs.delete("/tmp/setbranch.lua")
+
 local fileList = fs.list("")
 local number = table.getn(fileList, "rom")
 table.remove(fileList, number)
